@@ -13,7 +13,7 @@ format:
     fig-height: 6
     html-meta:
       robots: "noindex, nofollow"
-jupyter: quartofresh
+jupyter: python3
 execute:
   echo: false
   warning: false
