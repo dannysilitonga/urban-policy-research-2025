@@ -12,9 +12,16 @@ format:
     fig-width: 8
     fig-height: 6
     fig-responsive: true
+    css: |
+      @media (max-width: 768px) {
+        .cell-output-display img {
+          max-width: 100% !important;
+          height: auto !important;
+          width: auto !important;
+        }
+      }
     html-meta:
       robots: "noindex, nofollow"
-      viewport: "width=device-width, initial-scale=1"
 jupyter: python3
 execute:
   echo: false
