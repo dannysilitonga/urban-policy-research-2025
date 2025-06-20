@@ -713,10 +713,10 @@ for i, autotext in enumerate(autotexts):
 
 # Manually adjust worker count labels to prevent overlap
 label_positions = {
-    'Evolution': (0.2, 1.15),  # Move Technology Workers text to the right
+    'Evolution': (0.3, 1.15),  # Move Technology Workers text to the right
     'High Risk': (-0.55, 1.1),
     'Medium Risk': (0, -1.2),
-    'Protected': (1.0, 0.9)
+    'Protected': (1.1, 0.9)
 }
 
 # Clear the default labels and add custom ones
