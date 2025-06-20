@@ -1,0 +1,6 @@
+[build]
+  command = "pip install jupyter nbformat matplotlib seaborn plotly pandas numpy && curl -LO https://github.com/quarto-dev/quarto-cli/releases/download/v1.4.550/quarto-1.4.550-linux-amd64.tar.gz && tar -xzf quarto-1.4.550-linux-amd64.tar.gz && ./quarto-1.4.550/bin/quarto render index.qmd"
+  publish = "."
+
+[build.environment]
+  PYTHON_VERSION = "3.9"
