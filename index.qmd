@@ -20,6 +20,8 @@ execute:
   echo: false
   warning: false
   message: false
+  fig-responsive: true
+  out-width: "100%"
 ---
 
 ```{python}
