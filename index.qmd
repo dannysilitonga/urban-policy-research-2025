@@ -11,8 +11,10 @@ format:
     code-fold: true
     fig-width: 8
     fig-height: 6
+    fig-responsive: true
     html-meta:
       robots: "noindex, nofollow"
+      viewport: "width=device-width, initial-scale=1"
 jupyter: python3
 execute:
   echo: false
