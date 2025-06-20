@@ -1,7 +1,7 @@
 ---
-title: "AI's Coming Wave: Impact Analysis for City Workers"
-subtitle: "Interactive Dashboard and Strategic Timeline"
-author: "Policy Analysis Team"
+title: "Municipal Workforce Transformation:"
+subtitle: "NYC AI Impact Analysis 2025-2035"
+author: "Municipal Futures Research Collective"
 date: "June 18, 2025"
 format: 
   html:
@@ -73,7 +73,7 @@ print("✅ Pandas version:", pd.__version__)
 
 # The Reality Check You Need to Hear
 
-While you're reading this, 513 people lost their jobs to AI today—but none of them worked for NYC government. That 4-5 year head start the private sector has on AI adoption isn't just an academic observation—it's your window to prepare for what's coming.
+While you're reading this, 513 people lost their jobs to AI today—but none of them worked for NYC government. The private sector's 2-3 year lead in AI adoption isn't just an academic observation-—it's a temporary buffer that won't last forever.
 
 Microsoft just eliminated 6,000 positions in May 2025, with 40% targeting software engineers. IBM cut 8,000 more as AI agents took over HR functions. Meanwhile, NYC government is still debating AI ethics policies and running 18-month procurement processes. This lag isn't permanent protection—it's borrowed time.
 
@@ -130,7 +130,7 @@ Your job security depends more on property tax cycles than AI capabilities. Unde
 
 The Great Recession (December 2007 - June 2009) provides essential insights for understanding NYC's coming fiscal challenges and the extended timeline for municipal transformation.
 
-Municipal governments face different economic dynamics than private sector organizations. Property tax revenues, which comprise 50% of NYC's income, lag economic changes by 1-2 years due to assessment cycles. Historical evidence shows that while the Great Recession officially lasted 18 months, municipal budget cuts continued 4+ years after it ended.
+Municipal governments face different economic dynamics than private sector organizations. Property tax revenues, which comprise approximately 50% of NYC's income, lag economic changes by 1-2 years due to assessment cycles, creating 2-3 years of total revenue stability post-recession. Historical evidence shows that while the Great Recession officially lasted 18 months, municipal budget cuts continued 4+ years after it ended.
 
 ## NYC's Fiscal Timeline (2026-2032)
 
@@ -139,7 +139,7 @@ Municipal governments face different economic dynamics than private sector organ
 **The Depletion (2026-2028):**
 Recent projections show NYC's fiscal buffer operates on a compressed timeline:
 
-- **Property tax lag:** 50% of city revenue remains stable for 2-3 years post-recession
+- **Property tax lag:** About 50% of city revenue remains stable for 2-3 years post-recession
 - **Reserve funds:** Depleted by 2028, not 2029 as previously projected
 - **Income tax delays:** Even immediate economic impacts take 12-18 months to affect collections
 
@@ -250,7 +250,7 @@ plt.axvspan(2030, 2032, alpha=0.2, color='red', label='Perfect Storm Period')
 plt.axhline(y=1.0, color='red', linestyle='--', alpha=0.7, label='Critical Reserve Level')
 
 # Annotations for key events - using different colors
-plt.annotate('Reserve\nDepletion', xy=(2028.8, 0.15), xytext=(2025.5, 1.5),
+plt.annotate('Reserve\nDepletion', xy=(2028.9, 0.15), xytext=(2025.5, 1.5),
              arrowprops=dict(arrowstyle='simple', lw=1, color=colors['economic']), 
              fontweight='bold', color=colors['economic']) #-|>
 
@@ -603,14 +603,23 @@ worker_categories = {
         'Workers': 21425,  # ACS + DOHMH + portions of Other
         'Category': 'Medium Risk'
     },
-    'Public Safety/Uniformed': {
+    'Police/Fire (Protected)': {
         'Automation_Difficulty': 1,
         'Union_Protection': 5,
         'Political_Sensitivity': 5,
         'Fiscal_Pressure_Vulnerability': 1,
         'Timeline_Urgency': 1,
-        'Workers': 85300,  # NYPD + FDNY + DSNY + DOC
+        'Workers': 68100,  # NYPD + FDNY + DSNY + DOC
         'Category': 'Protected'
+    },
+        'Sanitation/Correction': {
+        'Automation_Difficulty': 3,
+        'Union_Protection': 4,
+        'Political_Sensitivity': 3,
+        'Fiscal_Pressure_Vulnerability': 3,
+        'Timeline_Urgency': 1.5,
+        'Workers': 17200,  # DSNY (9,700) + DOC (7,500)
+        'Category': 'Medium Risk'
     },
     'Education': {
         'Automation_Difficulty': 3,
@@ -693,12 +702,21 @@ wedges, texts, autotexts = ax2.pie(risk_summary.values, labels=risk_summary.inde
                                    autopct='%1.1f%%', startangle=90,
                                    colors=colors_pie, labeldistance=1.15)
 
+for autotext in autotexts:
+    autotext.set_fontsize(10) 
+
+# Move only Evolution's percentage text up
+for i, autotext in enumerate(autotexts):
+    if risk_summary.index[i] == 'Evolution':
+        x, y = autotext.get_position()
+        autotext.set_position((x + 0.05, y + 0.18))  # Move up by 0.15 units
+
 # Manually adjust worker count labels to prevent overlap
 label_positions = {
-    'Evolution': (1.0, 0.8),  # Move Technology Workers text to the right
+    'Evolution': (0.2, 1.15),  # Move Technology Workers text to the right
     'High Risk': (-0.55, 1.1),
-    'Medium Risk': (0.1, -1.2),
-    'Protected': (0.1, 1.1)
+    'Medium Risk': (0, -1.2),
+    'Protected': (1.0, 0.9)
 }
 
 # Clear the default labels and add custom ones
@@ -715,7 +733,8 @@ for i, (label, count) in enumerate(zip(risk_summary.index, risk_summary.values))
 ax2.set_title('Workforce Distribution by Risk Level\nTotal: {:,} Workers'.format(risk_summary.sum()), 
               fontweight='bold', fontsize=11)
 
-plt.tight_layout()
+#plt.tight_layout()
+plt.subplots_adjust(hspace=0.35)  # Add space between charts
 plt.show()
 
 # Print analysis
@@ -731,9 +750,15 @@ for category, data in worker_categories.items():
 
 Recent AI advances and the compressed implementation timeline have significantly shifted risk profiles across worker categories within NYC's 362,640 municipal workforce, requiring substantial revision of assumptions about "safe" jobs.
 
-## Technology Workers: Evolving Roles
+## Administrative Workers: Earlier and More Intense Impact
+
+The compressed timeline intensifies impact on administrative workers. Those in routine data processing, document review, or rules-based decision making face accelerated displacement with minimal preparation time. **311 Customer Service Representatives** face 2027-2028 implementation with 80-90% automation potential, representing immediate cost savings with minimal political resistance during fiscal crisis. **Data Entry and Clerical Staff** across agencies face 2027-2029 phased implementation as perfect automation targets with clear ROI calculations during budget pressure, while **Basic Permit Processing Staff** encounter 2028-2029 automation through digital document processing and rules-based approval systems, accelerated due to fiscal pressure and clear efficiency gains.
+
+## Technology Workers: Position Analysis
 
 Technology workers face the most dramatic shift in prospects. Rather than displacement, they become essential to the transformation process, but with compressed timelines that require rapid adaptation.
+
+### Role Evolution by Specialty
 
 **Software Engineers** must become "AI integration specialists" by 2027-2028. While 30% of routine coding is now AI-generated, government systems require human oversight for security, compliance, and complex integration with legacy systems.
 
@@ -741,30 +766,21 @@ Technology workers face the most dramatic shift in prospects. Rather than displa
 
 **Data Scientists** transform into critical AI interpreters, translating complex model results into actionable policy recommendations during crisis decision-making. Their role becomes essential during 2029-2030 when agencies need rapid but responsible AI deployment under fiscal constraints.
 
-## Administrative Workers: Earlier and More Intense Impact
+### Overall Risk Assessment (8,918 Positions)
 
-The compressed timeline intensifies impact on administrative workers. Those in routine data processing, document review, or rules-based decision making face accelerated displacement with minimal preparation time. **311 Customer Service Representatives** face 2027-2028 implementation with 80-90% automation potential, representing immediate cost savings with minimal political resistance during fiscal crisis. **Data Entry and Clerical Staff** across agencies face 2027-2029 phased implementation as perfect automation targets with clear ROI calculations during budget pressure, while **Basic Permit Processing Staff** encounter 2028-2029 automation through digital document processing and rules-based approval systems, accelerated due to fiscal pressure and clear efficiency gains.
-
-# OMD Position Analysis
-
-The Department of Sanitation Operations Management Division faces a complex position during municipal transformation. While technical expertise provides certain advantages, the compressed timeline and fiscal pressure create significant risks even for technically skilled workers.
-
-## Current OMD Workforce and Risk Profile (30 Positions)
-The OMD technical team includes data scientists and analysts, software engineers and developers, data engineers and database managers, ARCGIS specialists and spatial analysts, and systems architects. While this skillset aligns with AI implementation needs, technical expertise alone doesn't guarantee protection when fiscal pressure mounts.
-
-## Position Analysis: Competing Forces
 **Technical advantages** include expertise that agencies need for AI implementation, understanding of data systems architecture that becomes mission-critical during transformation, and specialized knowledge that's scarce across the fragmented municipal bureaucracy.
 
 **Substantial risks** include accelerated pressure from compressed fiscal timelines, high-visibility accountability when AI implementations succeed or fail, and the reality that organizational upheaval affects all municipal units during sustained fiscal crisis.
 
 **Bottom line:** Technical positioning offers better odds than routine administrative work, but doesn't eliminate exposure to the broader 25-30% workforce reduction projected by 2035. The compressed timeline means advantages must be leveraged smartly or they become irrelevant.
 
+
 # The Union Factor: Protection and Accelerated Timing
 
 Union affiliation significantly affects displacement timeline and protection level, but fiscal crisis reduces overall protection duration and effectiveness across all categories.
 
 ## Strongest Protection (Extended Timeline)
-**DC 37 (civilian workers)** maintains maximum political leverage through largest membership, but fiscal crisis weakens negotiating position as the "efficiency or insolvency" narrative gains traction. **Uniformed unions** retain protection through roles inherently difficult to automate plus strong political protection, with timelines remaining at 2035+ due to public safety priorities.
+**DC 37 (civilian workers)** maintains maximum political leverage through largest membership, but fiscal crisis weakens negotiating position as the "efficiency or insolvency" narrative gains traction. **Police and fire unions** retain protection through roles inherently difficult to automate plus strong political protection, with timelines remaining at 2035+ due to public safety priorities. **Sanitation and correction workers** face different pressures - while front-line roles resist automation, these positions proved vulnerable to budget cuts during COVID, demonstrating that fiscal crisis can override traditional uniformed protections.
 
 ## Moderate Protection (Shortened Windows)
 **Professional unions** representing social workers and librarians face role evolution by 2030-2031 rather than 2032-2033 as fiscal pressure reduces political protection for non-essential functions.
@@ -772,7 +788,7 @@ Union affiliation significantly affects displacement timeline and protection lev
 ## Least Protection (Accelerated Impact)
 **Managerial staff** face targeting as "efficiency" opportunities during fiscal crisis when reducing management layers provides both cost savings and political benefits. **Provisionals and non-competitive titles** become first eliminated during 2029 pressure cooker year lacking civil service protections, while **Temporary and part-time workers** face elimination during the strategic attrition period as the easiest targets for immediate cost reduction without political complications.
 
-# Key Takeaways: Strategic Implications for Workforce Transformation
+# Key Takeaways: Workforce Transformation Analysis
 
 AI displacement in NYC government follows an accelerated pattern shaped by the convergence of political cycles, fiscal crisis, and technological maturity as detailed in the perfect storm analysis above.
 
@@ -789,11 +805,11 @@ The updated fiscal projections create a compressed but intense transformation ti
 
 ## Workforce Reality by 2035
 
-Current projections indicate the NYC government workforce will be 25-30% smaller by 2035, dropping from approximately 362,640 to 254,000-272,000 workers, with transformation compressed into the intense 2030-2032 period. The remaining workforce will consist of workers who adapted quickly to AI collaboration models, those requiring complex human judgment, and positions with strong union or political protection.
+Current projections indicate the NYC government workforce will be 25-30% smaller by 2035, eliminating 90,000-108,000 positions as the workforce drops from approximately 362,640 to 254,000-272,000 workers, with transformation compressed into the intense 2030-2032 period. The remaining workforce will consist of workers who adapted quickly to AI collaboration models, those requiring complex human judgment, and positions with strong union or political protection.
 
 ## Technical Workers Analysis Summary
 
-The 30 technical positions within OMD, along with the broader 8,918 technology workers across all agencies (OTI plus 2% of each agency), face a fundamentally different risk profile than administrative workers, but technical expertise provides relative advantage, not immunity. The 2029 pressure cooker year creates demand for AI implementation expertise, yet the same fiscal crisis that creates opportunity also accelerates displacement timelines across all categories. While technical skills offer better positioning than routine administrative functions, the projected 25-30% municipal workforce reduction by 2035 affects all categories, and even technical workers face organizational restructuring that reshapes roles regardless of individual capability or union protection. Technical expertise buys strategic positioning and potentially better outcomes, but the compressed timeline and sustained fiscal pressure mean that even advantaged workers face significant organizational upheaval and must navigate the same fundamental forces reshaping municipal employment.
+The 8,918 technology workers across all agencies (OTI plus 2% of each agency) face a fundamentally different risk profile than administrative workers, but technical expertise provides relative advantage, not immunity. The 2029 pressure cooker year creates demand for AI implementation expertise, yet the same fiscal crisis that creates opportunity also accelerates displacement timelines across all categories. While technical skills offer better positioning than routine administrative functions, the projected 25-30% municipal workforce reduction by 2035 affects all categories, and even technical workers face organizational restructuring that reshapes roles regardless of individual capability or union protection. Technical expertise buys strategic positioning and potentially better outcomes, but the compressed timeline and sustained fiscal pressure mean that even advantaged workers face significant organizational upheaval and must navigate the same fundamental forces reshaping municipal employment.
 
 
 ---
@@ -806,7 +822,6 @@ The 30 technical positions within OMD, along with the broader 8,918 technology w
 - ✅ **Master Timeline**: Perfect Storm convergence visualization
 - ✅ **Risk Heatmap**: Department-by-department analysis  
 - ✅ **Worker Category Analysis**: Risk vs timeline correlation
-- ✅ **Complete Integration**: HackMD content merged with 4 visualizations
 - ✅ **Accurate Workforce Data**: Updated to reflect actual NYC municipal workforce (362,640 total)
 - ✅ **Technology Workers**: Calculated using OTI (1,666) + 2% of each agency (7,252) = 8,918 total
 :::
