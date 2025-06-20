@@ -21,6 +21,9 @@ execute:
   warning: false
   message: false
   fig-responsive: true
+  fig-width: 6      # Reduced from 8
+  fig-height: 4.5   # Reduced from 6
+  fig-dpi: 150
   out-width: "100%"
 ---
 
@@ -176,7 +179,7 @@ scenarios = {
     }
 }
 
-plt.figure(figsize=(8.5, 6))  # Made smaller
+plt.figure(figsize=(6, 4.5))  # Made smaller
 
 # Plot each scenario
 for scenario_name, params in scenarios.items():
@@ -664,7 +667,7 @@ worker_categories = {
 }
 
 # Create narrower subplot layout - stack vertically instead
-fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(8, 10))
+fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(6, 8))
 
 # Bubble chart: Timeline Urgency vs Workers
 risk_colors = {'High Risk': colors['critical'], 'Medium Risk': colors['medium'], 
