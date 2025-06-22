@@ -21,6 +21,20 @@ execute:
   message: false
 ---
 
+<style>
+.quarto-figure {
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+/* Ensure matplotlib figures scale properly */
+img {
+    max-width: 100%;
+    height: auto;
+}
+</style>
+
+
 ```{python}
 #| label: setup
 #| include: false
