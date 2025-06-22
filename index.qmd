@@ -12,14 +12,6 @@ format:
     fig-width: 8
     fig-height: 6
     fig-responsive: true
-    css: |
-      @media (max-width: 768px) {
-        .cell-output-display img {
-          max-width: 100% !important;
-          height: auto !important;
-          width: auto !important;
-        }
-      }
     html-meta:
       robots: "noindex, nofollow"
 jupyter: python3
@@ -416,7 +408,7 @@ Not all city workers face equal risk. AI adoption follows the wave pattern outli
 
 # Department Risk Assessment Data - Updated with accurate NYC agency headcount (362,640 total)
 dept_risk_data = {
-    'Department': ['Dept of Finance', '311 Service', 'Administrative (Other)', 'Basic Permit Processing',
+    'Department': ['Dept of Finance', '311 Service', 'Administrative (Other)', 'Contracts+Permits',
                    'Office of Technology', 'Dept Buildings', 'HRA/Social Services', 'NYPD', 'FDNY', 
                    'Dept Sanitation', 'Dept of Correction', 'DOE (Education)', 'Health + Hospitals', 
                    'Children\'s Services', 'Health & Mental Hygiene', 'Environmental Protection', 
@@ -424,9 +416,9 @@ dept_risk_data = {
     'Workers': [2026, 800, 22400, 3200, 8918, 1800, 21425, 50600, 17500, 9700, 7500, 138662, 45000, 
                 6455, 5370, 6320, 5762, 3745],
     'Risk_Level': ['High', 'High', 'High', 'High', 'Evolution', 'Medium', 'Medium', 'Protected', 'Protected', 
-                   'Medium', 'Medium', 'Medium', 'Medium', 'Medium', 'Medium', 'Low', 'Low', 'Low'],
-    'Timeline_Start': [2027, 2027, 2027, 2028, 2027, 2028, 2029, 2035, 2035, 2030, 2030, 2030, 2029, 
-                       2030, 2029, 2032, 2032, 2032],
+                   'Medium', 'Medium', 'Medium', 'Medium', 'Medium', 'Medium', 'Medium', 'Medium', 'Medium'],
+    'Timeline_Start': [2027, 2027, 2027, 2028, 2027, 2028, 2029, 2035, 2035, 2027, 2027, 2030, 2029, 
+                   2030, 2029, 2030, 2030, 2030],
     'Timeline_End': [2032, 2031, 2032, 2032, 2029, 2032, 2033, 2040, 2040, 2035, 2035, 2035, 2032, 
                      2033, 2032, 2037, 2037, 2037],
     'Union_Protection': [2, 1, 1, 2, 3, 3, 4, 5, 5, 4, 4, 4, 3, 4, 3, 3, 3, 4],  # 1-5 scale
@@ -449,6 +441,19 @@ print(f"• Technology Workers (OTI + 2% each agency): {df_dept_risk[df_dept_ris
 ```
 
 # 🎯 Risk Assessment Heatmap
+## **Dual Risk Framework: AI Automation + Fiscal Crisis**
+
+The risk assessment below reflects the reality that NYC municipal workers face two distinct but overlapping threats during the transformation period. The numerical scores (0-5) represent the **higher of two risk factors**: direct AI displacement risk or budget cut pressure during the fiscal crisis.
+
+**AI Automation Risk** follows predictable patterns based on technical feasibility and return on investment. Departments like Finance and 311 Customer Service face immediate AI implementation because automation provides clear, measurable cost savings with minimal political resistance. These departments show sustained high risk throughout their implementation periods regardless of broader fiscal conditions.
+
+**Fiscal Crisis Risk** affects nearly all departments during the 2030-2032 Perfect Storm period, creating workforce pressure through hiring freezes, strategic attrition, and service reductions. Departments like Environmental Protection, Transportation, Parks, Sanitation, and Correction show minimal AI risk during 2030-2032 but face significant budget pressure—the same fiscal mathematics that create organizational upheaval across non-protected agencies.
+
+**Combined Risk Logic** means departments face whichever threat is more severe in any given year. During 2030-2032, most agencies experience their highest risk scores not because AI suddenly accelerates, but because sustained fiscal pressure creates the political conditions for workforce transformation that were previously unacceptable.
+
+**Protection Hierarchy** emerges clearly through this dual framework: only Police and Fire maintain political protection that overrides both AI automation potential and fiscal pressure. All other departments face significant organizational upheaval during the Perfect Storm period, with differences in timing and intensity rather than immunity.
+
+**Bottom line:** The visualization shows that fiscal crisis expands AI displacement beyond just "automatable" roles to include budget-driven workforce reductions across nearly all municipal functions.
 
 ```{python}
 #| label: risk-heatmap-fixed
@@ -527,7 +532,7 @@ sns.heatmap(risk_pivot,
             annot_kws={'size': 8},
             cbar_kws={'label': 'Risk Level', 'shrink': 0.8})
 
-plt.title('🎯 Risk Assessment by Department\n(0=No Risk, 5=Critical)', 
+plt.title('Risk Assessment by Department\n(0=No Risk, 5=Critical)', 
           fontsize=12, fontweight='bold', pad=20)
 plt.xlabel('Year', fontweight='bold', fontsize=10)
 plt.ylabel('Department', fontweight='bold', fontsize=10)
