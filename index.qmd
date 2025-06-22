@@ -599,22 +599,38 @@ This analysis shows 18 select agencies representing the highest impact areas. NY
 
 # 📈 Worker Category Risk Analysis
 
+## **Analytical Framework: Pure AI Automation Risk**
+
+The worker category analysis below examines a fundamentally different question than the department risk heatmap above. While the department heatmap combines AI automation risk with fiscal crisis pressure, this section isolates **pure AI displacement potential** based on job function characteristics.
+
+**Key Methodological Differences:**
+
+**Department Heatmap Logic:** "What workforce pressure do agencies face during each year of the crisis?" (AI + budget cuts combined)
+
+**Worker Category Logic:** "How vulnerable are different types of work to AI automation regardless of timing or fiscal pressure?" (AI threat only)
+
+**Why the Differences Matter:** A Department of Transportation worker appears in both analyses differently. In the department heatmap, DOT shows high risk during 2030-2032 due to budget cuts and hiring freezes. In the worker category analysis, that same worker appears under "Infrastructure/Services" with moderate AI automation risk because their actual job functions—road maintenance, traffic management, engineering oversight—require human judgment and physical presence that AI cannot easily replicate.
+
+**Analytical Value:** This separation reveals that fiscal crisis affects departments broadly while AI automation affects job functions specifically. Understanding both dimensions provides the complete risk picture: **when** workforce pressure occurs (department timeline) and **why** certain roles face long-term displacement (job function vulnerability).
+
+**Bottom line:** Departments face immediate pressure from budget reality. Job categories face longer-term transformation from AI capabilities.
+
 ```{python}
 #| label: worker-category-analysis
 
 # Worker Category Risk Analysis - Updated with accurate NYC municipal workforce (362,640 total)
 worker_categories = {
     'Technology Workers': {
-        'Automation_Difficulty': 2,  # Low difficulty = high protection
+        'Automation_Difficulty': 5,  # hardest to automate
         'Union_Protection': 3,
         'Political_Sensitivity': 2,
         'Fiscal_Pressure_Vulnerability': 2,
-        'Timeline_Urgency': 3,
+        'Timeline_Urgency': 2, # evolution, not displacement
         'Workers': 8918,  # OTI (1,666) + 2% of each agency (7,252)
         'Category': 'Evolution'
     },
     'Administrative': {
-        'Automation_Difficulty': 5,  # High difficulty = low protection
+        'Automation_Difficulty': 1,  # easiest to automate
         'Union_Protection': 2,
         'Political_Sensitivity': 1,
         'Fiscal_Pressure_Vulnerability': 5,
@@ -623,34 +639,34 @@ worker_categories = {
         'Category': 'High Risk'
     },
     'Benefits/Social Services': {
-        'Automation_Difficulty': 4,
+        'Automation_Difficulty': 2,
         'Union_Protection': 4,
         'Political_Sensitivity': 4,
         'Fiscal_Pressure_Vulnerability': 5,
-        'Timeline_Urgency': 3,
+        'Timeline_Urgency': 4, # high AI automation period
         'Workers': 21425,  # ACS + DOHMH + portions of Other
         'Category': 'Medium Risk'
     },
     'Police/Fire (Protected)': {
-        'Automation_Difficulty': 1,
+        'Automation_Difficulty': 4,
         'Union_Protection': 5,
         'Political_Sensitivity': 5,
         'Fiscal_Pressure_Vulnerability': 1,
         'Timeline_Urgency': 1,
-        'Workers': 68100,  # NYPD + FDNY + DSNY + DOC
+        'Workers': 68100,  # NYPD + FDNY 
         'Category': 'Protected'
     },
         'Sanitation/Correction': {
-        'Automation_Difficulty': 3,
+        'Automation_Difficulty': 4,
         'Union_Protection': 4,
-        'Political_Sensitivity': 3,
+        'Political_Sensitivity': 4,
         'Fiscal_Pressure_Vulnerability': 3,
-        'Timeline_Urgency': 1.5,
+        'Timeline_Urgency': 1,
         'Workers': 17200,  # DSNY (9,700) + DOC (7,500)
         'Category': 'Medium Risk'
     },
     'Education': {
-        'Automation_Difficulty': 3,
+        'Automation_Difficulty': 4,
         'Union_Protection': 4,
         'Political_Sensitivity': 4,
         'Fiscal_Pressure_Vulnerability': 3,
@@ -659,7 +675,7 @@ worker_categories = {
         'Category': 'Medium Risk'
     },
     'Health & Hospitals': {
-        'Automation_Difficulty': 2,
+        'Automation_Difficulty': 4,
         'Union_Protection': 3,
         'Political_Sensitivity': 4,
         'Fiscal_Pressure_Vulnerability': 4,
