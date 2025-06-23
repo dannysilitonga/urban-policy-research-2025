@@ -145,7 +145,7 @@ Your job security depends more on property tax cycles than AI capabilities. Unde
 
 The Great Recession (December 2007 - June 2009) provides essential insights for understanding NYC's coming fiscal challenges and the extended timeline for municipal transformation.
 
-Municipal governments face different economic dynamics than private sector organizations. Property tax revenues, which comprise approximately 50% of NYC's income, lag economic changes by 1-2 years due to assessment cycles, creating 2-3 years of total revenue stability post-recession. Historical evidence shows that while the Great Recession officially lasted 18 months, municipal budget cuts continued 4+ years after it ended.
+Municipal governments face different economic dynamics than private sector organizations. Property tax, which comprises approximately 43% of NYC's total tax revenue, lags economic changes by 5-6 years due to assessment cycles and phase-in periods, providing substantial revenue stability well beyond the 2030 perfect storm period. However, the remaining 57% of tax revenue—from income taxes, business taxes, and other sources—plus all non-tax revenue streams respond immediately to economic downturns. Historical evidence shows that while the Great Recession officially lasted 18 months, municipal budget cuts continued 4+ years after it ended, driven by these more volatile revenue sources despite property tax stability.
 
 ## NYC's Fiscal Timeline (2026-2032)
 
@@ -154,9 +154,9 @@ Municipal governments face different economic dynamics than private sector organ
 **The Depletion (2026-2028):**
 Recent projections show NYC's fiscal buffer operates on a compressed timeline:
 
-- **Property tax lag:** About 50% of city revenue remains stable for 2-3 years post-recession
-- **Reserve funds:** Depleted by 2028, not 2029 as previously projected
-- **Income tax delays:** Even immediate economic impacts take 12-18 months to affect collections
+- **Property tax lag:** Property tax revenue remains stable for 5-6 years post-recession, while income taxes, business taxes, and state aid respond immediately to economic downturns, driving the 2030 fiscal crisis
+- **Reserve funds:** Depleted by 2028
+- **Income tax delays:** Economic impacts affect collections within 6-12 months as tax withholdings and quarterly payments reflect reduced earnings.
 
 ```{python}
 #| label: fiscal-projections
@@ -444,7 +444,6 @@ df_dept_risk = pd.DataFrame(dept_risk_data)
 # Display summary statistics
 print("📋 Department Risk Assessment Data Structure (Accurate NYC Workforce):")
 print(f"📊 Total Workers Analyzed: {df_dept_risk['Workers'].sum():,}")
-print(f"🏢 Departments/Agencies Covered: {len(df_dept_risk)}")
 print(f"⚠️ High Risk Departments: {len(df_dept_risk[df_dept_risk['Risk_Level'] == 'High'])}")
 print(f"🛡️ Protected Departments: {len(df_dept_risk[df_dept_risk['Risk_Level'] == 'Protected'])}")
 print("\n🎯 Key Agency Breakdown:")
