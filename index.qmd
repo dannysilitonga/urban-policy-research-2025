@@ -81,7 +81,7 @@ print("✅ Pandas version:", pd.__version__)
 - **Timeline Convergence**: The 2030-2032 "Perfect Storm" creates ideal transformation conditions
 - **Fiscal Pressure**: NYC's reserves will be depleted by 2028, creating sustained pressure through 2032
 - **Implementation Waves**: AI adoption follows predictable patterns across three waves from 2027-2032
-- **Strategic Positioning**: Technical workers (like OMD) face opportunity rather than displacement
+- **Strategic Positioning**: Technical workers face opportunity rather than displacement
 - **Workforce Scale**: Analysis based on NYC's actual 362,640 municipal workers across all agencies
 - **Technology Workers**: 8,918 total (OTI: 1,666 + 2% from each agency: 7,252)
 :::
